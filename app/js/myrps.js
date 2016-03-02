@@ -29,10 +29,10 @@ function getPlayerMove(move) {
         return getInput();
     }
     else {
+        alert("Please type in: rock, paper, or scissors");
         return move;
-
         }
-    }
+}
 // Write an expression that operates on a variable called `move`
 // If a `move` has a value, your expression should evaluate to that value.
 // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
@@ -51,32 +51,32 @@ function getWinner(playerMove,computerMove) {
     }
     else if (playerMove === "rock") {
         if (computerMove === "scissors") {
-            playerWins++;
-            return "rock wins";
+            console.log("player:rock \t computer:scissors")
+            return "player wins";
         }
         else {
-            computerWins++;
-            return "paper wins";
+            console.log("player:rock \t computer:paper")
+            return "computer wins";
         }
     }
     else if (playerMove === "paper") {
             if (computerMove === "rock") {
-                playerWins++;
-                return "paper wins";
-        }
+                console.log("player:paper \t computer:rock")
+            return "player wins";
+            }
         else {
-            computerWins++;
-            return "scissors wins";
+            console.log("player:paper \t computer:scissors")
+            return "computer wins";
         }
     }
     else if (playerMove === "scissors") {
         if (computerMove === "paper") {
-            playerWins++;
-            return "scissors wins";
+            console.log("player:scissors \t computer:paper")
+            return "player wins";
         }
         else {
-            computerWins++;
-            return "rock wins";
+            console.log("player:scissors \t computer:rock")
+            return "computer wins";
         }
     }
 }
@@ -89,12 +89,17 @@ function playToFive() {
     var computerWins = 0;
     console.log("Let's play Rock, Paper, Scissors")
         while (playerWins < 5 || computerWins < 5) {
+            getInput();
+            randomPlay();
             getWinner(playerMove, computerMove); 
-    
-    return [playerWins, computerWins];
+            if (getWinner == "player wins") {
+                playerWins++;
+            }
+            else {
+                computerWins++;
+            }
         }
+        return ["Player: " + playerWins, "Computer: " + computerWins];
 }
-getInput();
-randomPlay();
 playToFive();
 
